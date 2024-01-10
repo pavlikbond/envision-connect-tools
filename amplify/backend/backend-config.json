@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "envisionconnecttools5bd781d1": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_envisionconnecttools5bd781d1_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "envisionconnecttools5bd781d1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_envisionconnecttools5bd781d1_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "envisionconnecttools5bd781d1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_envisionconnecttools5bd781d1_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "envisionconnecttools5bd781d1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_envisionconnecttools5bd781d1_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "envisionconnecttools5bd781d1"
+        }
+      ]
+    }
+  }
+}
