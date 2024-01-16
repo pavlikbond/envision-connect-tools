@@ -13,7 +13,7 @@ const DisplayCode = ({ jsonData, heading }) => {
     <div className="">
       <div className="rounded-md p-4 shadow  bg-slate-50 min-w-[24rem] max-w-5xl">
         <h2 className="text-2xl font-bold text-slate-600 mb-4">{heading}</h2>
-        <CopyButton data={jsonData} />
+        <CopyButton data={JSON.stringify(jsonData, null, 2)} />
         <JSONPretty themeClassName="custom-json-pretty" data={jsonData} theme={customTheme} />
       </div>
     </div>
