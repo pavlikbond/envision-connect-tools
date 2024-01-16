@@ -318,3 +318,17 @@ button:hover {
 .markdown code {
   font-family: "Courier New", Courier, monospace;
 }
+
+.markdown table {
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid #000; /* You can adjust the color and width as needed */
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #000; /* You can adjust the color and width as needed */
+  padding: 8px;
+  text-align: left;
+}

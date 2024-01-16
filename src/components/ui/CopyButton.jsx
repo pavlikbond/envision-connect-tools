@@ -6,7 +6,7 @@ const CopyButton = ({ data }) => {
   //function to copy the data to the clipboard
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+      await navigator.clipboard.writeText(data);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 3000); // Reset "Copied" state after 3 seconds
     } catch (error) {
