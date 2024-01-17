@@ -7,6 +7,7 @@ import BulkCloser from "./pages/BulkCloser/BulkCloserPage.jsx";
 //import { Authenticator } from "@aws-amplify/ui-react";
 //import "@aws-amplify/ui-react/styles.css";
 import SideBar from "./components/SideBar";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import QueueReader from "./pages/QueueReaderPage.jsx";
 import Home from "./pages/HomePage.jsx";
 import GroupMappings from "./pages/GroupMappingsPage.jsx";
@@ -139,16 +140,18 @@ function App() {
             </Route>
             <Route path="/sign-in" element={<SignIn />} />
 
-            <Route path="/bulk-closer/" element={<BulkCloser />} />
-            <Route path="/queue-reader/" element={<QueueReader data={companyDataList} />} />
-            <Route path="/group-mapping/" element={<GroupMappings data={companyData} />} />
-            <Route path="/ticket-generator/" element={<EchoCreator data={companyData} />} />
-            <Route path="/mapping-generator/" element={<MappingGenerator />} />
-            <Route path="/group-finder/" element={<GroupFinderPage data={companyData} />} />
-            <Route path="/files" element={<Files />} />
-            <Route path="/flags" element={<FlagFinder data={companyData} />} />
-            <Route path="/group-mapper" element={<GroupMapper />} />
-            <Route path="/stacksets" element={<StackSetPage />}></Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/bulk-closer" element={<BulkCloser />} />
+              <Route path="/queue-reader" element={<QueueReader data={companyDataList} />} />
+              <Route path="/group-mapping" element={<GroupMappings data={companyData} />} />
+              <Route path="/ticket-generator" element={<EchoCreator data={companyData} />} />
+              <Route path="/mapping-generator" element={<MappingGenerator />} />
+              <Route path="/group-finder" element={<GroupFinderPage data={companyData} />} />
+              <Route path="/files" element={<Files />} />
+              <Route path="/flags" element={<FlagFinder data={companyData} />} />
+              <Route path="/group-mapper" element={<GroupMapper />} />
+              <Route path="/stacksets" element={<StackSetPage />}></Route>
+            </Route>
           </Routes>
         </div>
       </UserProvider>

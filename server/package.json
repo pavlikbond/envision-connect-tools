@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node app/server.js",
+    "start": "pm2 start app/server.js",
     "dev": "nodemon app/server.js"
   },
   "keywords": [],
@@ -24,7 +24,8 @@
     "openai": "^4.24.3",
     "pdf-parse": "^1.1.1",
     "pg": "^8.11.3",
-    "pgvector": "^0.1.7"
+    "pgvector": "^0.1.7",
+    "pm2": "^5.3.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
