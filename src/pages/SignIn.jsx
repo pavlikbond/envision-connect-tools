@@ -1,14 +1,7 @@
 import React from "react";
 import { Authenticator } from "@aws-amplify/ui-react";
-import { useUser } from "../contexts/UserContext";
-import { useEffect } from "react";
-import { getCurrentUser } from "aws-amplify/auth";
-import { useNavigate } from "react-router-dom";
-const SignIn = () => {
-  //check if user signed in, if so redirect to home page
-  const navigate = useNavigate();
-  const { isSignedIn } = useUser();
 
+const SignIn = () => {
   const formFields = {
     signIn: {
       username: {
