@@ -40,7 +40,6 @@ import { Amplify } from "aws-amplify";
 import { useLocation } from "react-router-dom";
 
 function App() {
-  const location = useLocation();
   const [companyData, setCompanyData] = useState({});
   const [companyDataList, setCompanyDataList] = useState([]);
   const [, setError] = useState("");
@@ -56,7 +55,6 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCompanyData(data);
       })
       .catch((err) => {
@@ -70,7 +68,6 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCompanyDataList([...data]);
       })
       .catch((err) => {
@@ -85,7 +82,6 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUsefulLinks(data);
       })
       .catch((err) => {
@@ -118,39 +114,39 @@ function App() {
           <Routes>
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/" element={<Home data={usefulLinks} />}></Route>
-            <Route path="/docs" element={<Documentation />}>
+            <Route path="/docs/" element={<Documentation />}>
               <Route path="" element={<DocsHomePage />} />
-              <Route path="overview" element={<Overview />} />
-              <Route path="incident-request" element={<Outlet />}>
-                <Route path="create" element={<Create />} />
-                <Route path="update" element={<Update />} />
-                <Route path="comments" element={<CommentsPage ticketType="Case" />} />
-                <Route path="return-ptn" element={<ReturnPtnPage ticketType="Case" />} />
-                <Route path="queue" element={<ReadQueue key="/incident-request/queue" isCase={true} />} />
+              <Route path="overview/" element={<Overview />} />
+              <Route path="incident-request/" element={<Outlet />}>
+                <Route path="create/" element={<Create />} />
+                <Route path="update/" element={<Update />} />
+                <Route path="comments/" element={<CommentsPage ticketType="Case" />} />
+                <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Case" />} />
+                <Route path="queue/" element={<ReadQueue key="/incident-request/queue" isCase={true} />} />
               </Route>
               <Route path="change" element={<Outlet />}>
-                <Route path="approve-reject" element={<ApproveRejectPage />} />
-                <Route path="comments" element={<CommentsPage ticketType="Change" />} />
-                <Route path="return-ptn" element={<ReturnPtnPage ticketType="Change" />} />
-                <Route path="queue" element={<ReadQueue key="/change/queue" isCase={false} />} />
+                <Route path="approve-reject/" element={<ApproveRejectPage />} />
+                <Route path="comments/" element={<CommentsPage ticketType="Change" />} />
+                <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Change" />} />
+                <Route path="queue/" element={<ReadQueue key="/change/queue" isCase={false} />} />
               </Route>
-              <Route path="delete-from-queue" element={<DeletePage />} />
-              <Route path="get-ticket-details" element={<GetTicketDetailsPage />} />
-              <Route path="echo" element={<EchoPage />} />
+              <Route path="delete-from-queue/" element={<DeletePage />} />
+              <Route path="get-ticket-details/" element={<GetTicketDetailsPage />} />
+              <Route path="echo/" element={<EchoPage />} />
             </Route>
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-in/" element={<SignIn />} />
 
             <Route element={<ProtectedRoute />}>
-              <Route path="/bulk-closer" element={<BulkCloser />} />
-              <Route path="/queue-reader" element={<QueueReader data={companyDataList} />} />
-              <Route path="/group-mapping" element={<GroupMappings data={companyData} />} />
-              <Route path="/ticket-generator" element={<EchoCreator data={companyData} />} />
-              <Route path="/mapping-generator" element={<MappingGenerator />} />
-              <Route path="/group-finder" element={<GroupFinderPage data={companyData} />} />
-              <Route path="/files" element={<Files />} />
-              <Route path="/flags" element={<FlagFinder data={companyData} />} />
-              <Route path="/group-mapper" element={<GroupMapper />} />
-              <Route path="/stacksets" element={<StackSetPage />}></Route>
+              <Route path="/bulk-closer/" element={<BulkCloser />} />
+              <Route path="/queue-reader/" element={<QueueReader data={companyDataList} />} />
+              <Route path="/group-mapping/" element={<GroupMappings data={companyData} />} />
+              <Route path="/ticket-generator/" element={<EchoCreator data={companyData} />} />
+              <Route path="/mapping-generator/" element={<MappingGenerator />} />
+              <Route path="/group-finder/" element={<GroupFinderPage data={companyData} />} />
+              <Route path="/files/" element={<Files />} />
+              <Route path="/flags/" element={<FlagFinder data={companyData} />} />
+              <Route path="/group-mapper/" element={<GroupMapper />} />
+              <Route path="/stacksets/" element={<StackSetPage />}></Route>
             </Route>
           </Routes>
         </div>

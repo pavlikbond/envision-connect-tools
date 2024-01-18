@@ -12,30 +12,30 @@ const Overview = () => {
   const [data4, setData4] = useState("");
 
   useEffect(() => {
-    // fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part1.md")
-    //   .then((res) => res.text())
-    //   .then((data) => setData1(data));
-    fetch(md1)
+    fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part1.md")
       .then((res) => res.text())
       .then((data) => setData1(data));
-    fetch(md2)
-      .then((res) => res.text())
-      .then((data) => setData2(data));
-    fetch(md3)
-      .then((res) => res.text())
-      .then((data) => setData3(data));
-    fetch(md4)
-      .then((res) => res.text())
-      .then((data) => setData4(data));
-    // fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part2.md")
+    // fetch(md1)
+    //   .then((res) => res.text())
+    //   .then((data) => setData1(data));
+    // fetch(md2)
     //   .then((res) => res.text())
     //   .then((data) => setData2(data));
-    // fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part3.md")
+    // fetch(md3)
     //   .then((res) => res.text())
     //   .then((data) => setData3(data));
-    // fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part4.md")
+    // fetch(md4)
     //   .then((res) => res.text())
     //   .then((data) => setData4(data));
+    fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part2.md")
+      .then((res) => res.text())
+      .then((data) => setData2(data));
+    fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part3.md")
+      .then((res) => res.text())
+      .then((data) => setData3(data));
+    fetch("https://public-client-guide.s3.us-west-1.amazonaws.com/part4.md")
+      .then((res) => res.text())
+      .then((data) => setData4(data));
   }, []);
 
   return (

@@ -12,22 +12,52 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 import { TiDeleteOutline } from "react-icons/ti";
 import { TbListDetails } from "react-icons/tb";
 import { RiArrowTurnBackLine } from "react-icons/ri";
-
+import { useState, useEffect } from "react";
 // import the specific icons you need here
-
+import { IoMenuSharp } from "react-icons/io5";
 const DocsSidebar = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMobile(window.innerWidth < 768);
+    });
+  }, []);
+
   return (
-    <div className="w-56 bg-white flex flex-col ">
-      <h2 className="text-center text-xl my-6 text-purple-600 font-semibold">Docs</h2>
-      {sections.map((section, index) => (
-        <div key={index} className="text-slate-500">
-          <Divider variant="middle" className="py-1" />
-          <p className="px-6 py-1">{section.name}</p>
-          {section.links.map((link, index) => (
-            <MyLink key={index} path={link.path} name={link.name} Icon={link.icon} />
-          ))}
+    <div
+      className={`w-56 bg-white flex flex-col  border-slate-300 ${
+        isMobile
+          ? "absolute  w-screen border-r-0 ml-16 z-[1050] bg-slate-50 border-b-2 pb-2 border-slate-300"
+          : "border-r-2"
+      }`}
+    >
+      {isMobile && (
+        <div className="ml-4 text-center text-black py-4 relative right-0 ">
+          <IoMenuSharp onClick={toggleMenu} size={24} />
         </div>
-      ))}
+      )}
+      {(!isMobile || isOpen) && (
+        <>
+          <h2 className={`text-xl my-6 text-purple-600 font-semibold ${isMobile ? "text-left pl-6" : "text-center"}`}>
+            Docs
+          </h2>
+          {sections.map((section, index) => (
+            <div key={index} className="text-slate-500">
+              <Divider variant="middle" className="py-1" />
+              <p className="px-6 py-1">{section.name}</p>
+              {section.links.map((link, index) => (
+                <MyLink key={index} path={link.path} name={link.name} Icon={link.icon} />
+              ))}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const ChatComponent = () => {
       });
   }, [messages]);
   return (
-    <div className="relative h-screen max-h-screen bg-white overflow-auto " id="message-container">
+    <div className="relative h-screen max-h-screen bg-white overflow-auto w-full " id="message-container">
       <div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
         <h3 className="text-slate-600 font-semibold">Chat</h3>
       </div>
