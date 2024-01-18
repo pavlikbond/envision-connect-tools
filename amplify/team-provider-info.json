@@ -1,14 +1,14 @@
 {
-  "dev": {
+  "prod": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-envisionconnecttools-dev-123647-authRole",
-      "UnauthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-dev-123647-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-dev-123647-authRole",
+      "AuthRoleName": "amplify-envisionconnecttools-prod-161549-authRole",
+      "UnauthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-prod-161549-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-prod-161549-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-envisionconnecttools-dev-123647-deployment",
-      "UnauthRoleName": "amplify-envisionconnecttools-dev-123647-unauthRole",
-      "StackName": "amplify-envisionconnecttools-dev-123647",
-      "StackId": "arn:aws:cloudformation:us-west-1:555142555998:stack/amplify-envisionconnecttools-dev-123647/0cd7e820-af1e-11ee-b832-063dbd13b31b",
+      "DeploymentBucketName": "amplify-envisionconnecttools-prod-161549-deployment",
+      "UnauthRoleName": "amplify-envisionconnecttools-prod-161549-unauthRole",
+      "StackName": "amplify-envisionconnecttools-prod-161549",
+      "StackId": "arn:aws:cloudformation:us-west-1:555142555998:stack/amplify-envisionconnecttools-prod-161549/f920fab0-b585-11ee-9a91-0201373eee25",
       "AmplifyAppId": "d2d9nqe13qd0q"
     },
     "categories": {
@@ -21,7 +21,39 @@
         }
       },
       "hosting": {
-        "S3AndCloudFront": {}
+        "amplifyhosting": {
+          "appId": "d2d9nqe13qd0q",
+          "type": "manual"
+        }
+      }
+    }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-envisionconnecttools-dev-185054-authRole",
+      "UnauthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-dev-185054-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::555142555998:role/amplify-envisionconnecttools-dev-185054-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-envisionconnecttools-dev-185054-deployment",
+      "UnauthRoleName": "amplify-envisionconnecttools-dev-185054-unauthRole",
+      "StackName": "amplify-envisionconnecttools-dev-185054",
+      "StackId": "arn:aws:cloudformation:us-west-1:555142555998:stack/amplify-envisionconnecttools-dev-185054/a37387c0-b59b-11ee-b345-06f2ff5480e9",
+      "AmplifyAppId": "d2d9nqe13qd0q"
+    },
+    "categories": {
+      "auth": {
+        "envisionconnecttools5bd781d1": {
+          "userPoolId": "us-west-1_dF7BpPV47",
+          "userPoolName": "bulkcloseamplify2d2d1abf_userpool_2d2d1abf-dev",
+          "webClientId": "2v3n87gqp93sagd9b4u76uin4v",
+          "nativeClientId": "75nvg9pta60fjurlfdbgppbb3r"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2d9nqe13qd0q",
+          "type": "manual"
+        }
       }
     }
   }

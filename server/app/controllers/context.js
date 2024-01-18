@@ -1,13 +1,10 @@
-import pkg from "pg";
 import pgvector from "pgvector/pg";
 import { getEmbeddings } from "./embeddings.js";
 import { removeExtraPeriods } from "../utils/utils.js";
-const { Client } = pkg;
+import { connectDb } from "../utils/utils.js";
 
 export async function getMatchesFromEmbeddings(embeddings) {
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-  });
+  const client = connectDb();
   await client.connect();
   let queryString = "SELECT text FROM embeddings ORDER BY vector <-> $1 LIMIT 5;";
 

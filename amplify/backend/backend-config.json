@@ -9,9 +9,10 @@
     }
   },
   "hosting": {
-    "S3AndCloudFront": {
+    "amplifyhosting": {
       "providerPlugin": "awscloudformation",
-      "service": "S3AndCloudFront"
+      "service": "amplifyhosting",
+      "type": "manual"
     }
   },
   "parameters": {
@@ -44,6 +45,22 @@
         {
           "category": "auth",
           "resourceName": "envisionconnecttools5bd781d1"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     }

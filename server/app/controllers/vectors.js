@@ -2,13 +2,11 @@ import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Document, RecursiveCharacterTextSplitter } from "@pinecone-database/doc-splitter";
 import { getEmbeddings } from "./embeddings.js";
 import md5 from "md5";
-import pkg from "pg";
 import pgvector from "pgvector/pg";
-const { Client } = pkg;
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-});
+import { connectDb } from "../utils/utils.js";
+
 export async function uploadToDb(file) {
+  const client = connectDb();
   const loader = new PDFLoader(file);
   const pages = await loader.load();
 

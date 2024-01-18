@@ -3,7 +3,7 @@ import { downloadFromS3 } from "../controllers/s3Controller.js"; // import the f
 import { uploadToDb } from "../controllers/vectors.js";
 const router = express.Router();
 
-router.get("/download", async (req, res) => {
+router.post("/download", async (req, res) => {
   const file_name = await downloadFromS3();
   //return the file name to the client in json with status of 200
   if (!file_name) {
