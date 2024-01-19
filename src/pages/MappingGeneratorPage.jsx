@@ -37,9 +37,9 @@ const MappingGeneratorPage = () => {
     setInfo([]);
     setData({});
     setLoading(true);
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/generate-mapping?hostname=${environment}&company=${name}`, {
+    fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/generate-mapping?hostname=${environment}&company=${name}`, {
       headers: {
-        "X-Api-Key": process.env.REACT_APP_API_KEY,
+        "X-Api-Key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
     })
       .then((response) => response.json())

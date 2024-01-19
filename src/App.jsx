@@ -1,11 +1,6 @@
 import "./index.css";
-//import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import BulkCloser from "./pages/BulkCloser/BulkCloserPage.jsx";
-//import { Amplify } from "aws-amplify";
-//import awsconfig from "./aws-exports";
-//import { Authenticator } from "@aws-amplify/ui-react";
-//import "@aws-amplify/ui-react/styles.css";
 import SideBar from "./components/SideBar";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import QueueReader from "./pages/QueueReaderPage.jsx";
@@ -35,22 +30,18 @@ import GetTicketDetailsPage from "./pages/docs/GetTicketDetailsPage.jsx";
 import EchoPage from "./pages/docs/EchoPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import SignIn from "./pages/SignIn.jsx";
-import { Amplify } from "aws-amplify";
-
-import { useLocation } from "react-router-dom";
 
 function App() {
   const [companyData, setCompanyData] = useState({});
   const [companyDataList, setCompanyDataList] = useState([]);
   const [, setError] = useState("");
   const [usefulLinks, setUsefulLinks] = useState([]);
-  const process = {};
-  process.env = import.meta.env;
+
   useEffect(() => {
     //get companies for mapping tables
-    fetch(`${process.env.VITE_REACT_APP_API_ENDPOINT}/mappings`, {
+    fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/mappings`, {
       headers: {
-        "x-api-key": process.env.VITE_REACT_APP_API_KEY,
+        "x-api-key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
     })
       .then((response) => response.json())
@@ -61,9 +52,9 @@ function App() {
         console.log(err);
       });
 
-    fetch(`${process.env.VITE_REACT_APP_API_ENDPOINT}/queues`, {
+    fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/queues`, {
       headers: {
-        "x-api-key": process.env.VITE_REACT_APP_API_KEY,
+        "x-api-key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
     })
       .then((response) => response.json())
@@ -75,9 +66,9 @@ function App() {
         setError("Error connecting to API");
       });
 
-    fetch(`${process.env.VITE_REACT_APP_API_ENDPOINT}/getLinks`, {
+    fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/getLinks`, {
       headers: {
-        "x-api-key": process.env.VITE_REACT_APP_API_KEY,
+        "x-api-key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
     })
       .then((response) => response.json())
@@ -106,52 +97,48 @@ function App() {
 
   //const AuthenticatedRoutes = withAuthenticator(ProtectedRoutes);
   return (
-    <>
-      <UserProvider>
-        <div className="flex">
-          <SideBar />
+    <div className="flex">
+      <SideBar />
 
-          <Routes>
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/" element={<Home data={usefulLinks} />}></Route>
-            <Route path="/docs/" element={<Documentation />}>
-              <Route path="" element={<DocsHomePage />} />
-              <Route path="overview/" element={<Overview />} />
-              <Route path="incident-request/" element={<Outlet />}>
-                <Route path="create/" element={<Create />} />
-                <Route path="update/" element={<Update />} />
-                <Route path="comments/" element={<CommentsPage ticketType="Case" />} />
-                <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Case" />} />
-                <Route path="queue/" element={<ReadQueue key="/incident-request/queue" isCase={true} />} />
-              </Route>
-              <Route path="change" element={<Outlet />}>
-                <Route path="approve-reject/" element={<ApproveRejectPage />} />
-                <Route path="comments/" element={<CommentsPage ticketType="Change" />} />
-                <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Change" />} />
-                <Route path="queue/" element={<ReadQueue key="/change/queue" isCase={false} />} />
-              </Route>
-              <Route path="delete-from-queue/" element={<DeletePage />} />
-              <Route path="get-ticket-details/" element={<GetTicketDetailsPage />} />
-              <Route path="echo/" element={<EchoPage />} />
-            </Route>
-            <Route path="/sign-in/" element={<SignIn />} />
+      <Routes>
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<Home data={usefulLinks} />}></Route>
+        <Route path="/docs/" element={<Documentation />}>
+          <Route path="" element={<DocsHomePage />} />
+          <Route path="overview/" element={<Overview />} />
+          <Route path="incident-request/" element={<Outlet />}>
+            <Route path="create/" element={<Create />} />
+            <Route path="update/" element={<Update />} />
+            <Route path="comments/" element={<CommentsPage ticketType="Case" />} />
+            <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Case" />} />
+            <Route path="queue/" element={<ReadQueue key="/incident-request/queue" isCase={true} />} />
+          </Route>
+          <Route path="change" element={<Outlet />}>
+            <Route path="approve-reject/" element={<ApproveRejectPage />} />
+            <Route path="comments/" element={<CommentsPage ticketType="Change" />} />
+            <Route path="return-ptn/" element={<ReturnPtnPage ticketType="Change" />} />
+            <Route path="queue/" element={<ReadQueue key="/change/queue" isCase={false} />} />
+          </Route>
+          <Route path="delete-from-queue/" element={<DeletePage />} />
+          <Route path="get-ticket-details/" element={<GetTicketDetailsPage />} />
+          <Route path="echo/" element={<EchoPage />} />
+        </Route>
+        <Route path="/sign-in/" element={<SignIn />} />
 
-            <Route element={<ProtectedRoute />}>
-              <Route path="/bulk-closer/" element={<BulkCloser />} />
-              <Route path="/queue-reader/" element={<QueueReader data={companyDataList} />} />
-              <Route path="/group-mapping/" element={<GroupMappings data={companyData} />} />
-              <Route path="/ticket-generator/" element={<EchoCreator data={companyData} />} />
-              <Route path="/mapping-generator/" element={<MappingGenerator />} />
-              <Route path="/group-finder/" element={<GroupFinderPage data={companyData} />} />
-              <Route path="/files/" element={<Files />} />
-              <Route path="/flags/" element={<FlagFinder data={companyData} />} />
-              <Route path="/group-mapper/" element={<GroupMapper />} />
-              <Route path="/stacksets/" element={<StackSetPage />}></Route>
-            </Route>
-          </Routes>
-        </div>
-      </UserProvider>
-    </>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/bulk-closer/" element={<BulkCloser />} />
+          <Route path="/queue-reader/" element={<QueueReader data={companyDataList} />} />
+          <Route path="/group-mapping/" element={<GroupMappings data={companyData} />} />
+          <Route path="/ticket-generator/" element={<EchoCreator data={companyData} />} />
+          <Route path="/mapping-generator/" element={<MappingGenerator />} />
+          <Route path="/group-finder/" element={<GroupFinderPage data={companyData} />} />
+          <Route path="/files/" element={<Files />} />
+          <Route path="/flags/" element={<FlagFinder data={companyData} />} />
+          <Route path="/group-mapper/" element={<GroupMapper />} />
+          <Route path="/stacksets/" element={<StackSetPage />}></Route>
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

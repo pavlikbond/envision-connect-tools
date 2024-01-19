@@ -15,27 +15,23 @@ import { RiArrowTurnBackLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
 // import the specific icons you need here
 import { IoMenuSharp } from "react-icons/io5";
+import { useMobile } from "../../contexts/MobileContext";
+import { cn } from "../../lib/utils";
 const DocsSidebar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const isMobile = useMobile();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setIsMobile(window.innerWidth < 768);
-    });
-  }, []);
-
   return (
     <div
-      className={`w-56 bg-white flex flex-col  border-slate-300 ${
-        isMobile
-          ? "absolute  w-screen border-r-0 ml-16 z-[1050] bg-slate-50 border-b-2 pb-2 border-slate-300"
-          : "border-r-2"
-      }`}
+      className={cn("bg-slate-100 sticky top-0 max-h-screen flex flex-col border-b-2 border-slate-300", {
+        "w-full": isMobile,
+        "w-64": !isMobile,
+        "pb-4": isOpen,
+      })}
     >
       {isMobile && (
         <div className="ml-4 text-center text-black py-4 relative right-0 ">

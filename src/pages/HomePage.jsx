@@ -11,8 +11,10 @@ import { useUser } from "../contexts/UserContext";
 import DataArrayIcon from "@mui/icons-material/DataArray";
 import UsefulLink from "../components/ui/UsefulLink";
 import { IoMdDocument } from "react-icons/io";
+import Laptop from "../assets/laptop.jpg";
+import Button from "@mui/material/Button";
 const buttonStyle =
-  "w-64 bg-cyan-500 duration-200 text-white font-semibold text-xl flex items-center px-4 py-4 rounded shadow";
+  "w-48 h-12 bg-purple-500 duration-200 text-white font-semibold flex items-center px-2 py-2 rounded shadow";
 
 const HomePage = ({ data }) => {
   const [usefulLinks, setUsefulLinks] = useState([]);
@@ -59,42 +61,83 @@ const HomePage = ({ data }) => {
         ]
       : []),
   ];
-  return (
-    <div className="w-full p-10">
-      <h1 className="text-center text-slate-600 mb-8">Envision Connect Tools</h1>
-      {fact && (
-        <Card sx={{ minWidth: 275, maxWidth: "50%", margin: "25px auto" }}>
-          <CardContent>
-            <div className="container">
-              <h2 className="font-bold text-2xl my-2">Random Fact</h2>
-              {fact ? <p className="font-semibold">{fact}</p> : <Skeleton variant="rounded" width={350} height={50} />}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-      <div className="grid grid-cols-5 gap-3 w-fit mx-auto">
-        {links.map(({ to, icon: Icon, label }, index) => (
-          <Link key={index} to={to}>
-            <button className={buttonStyle}>
-              <Icon size="28" className="mr-3" />
-              {label}
-            </button>
-          </Link>
-        ))}
-      </div>
 
-      {isSignedIn && usefulLinks.length > 0 && (
-        <div className="container max-w-3xl mx-auto my-10 text-slate-600">
-          <p className="text-3xl font-bold text-center mb-4">Useful Links</p>
-          <div className="grid grid-cols-1 divide-y-4">
-            {usefulLinks.map((link, index) => (
-              <UsefulLink key={index} link={link.url} name={link.name} />
-            ))}
-          </div>
+  if (isSignedIn) {
+    return (
+      <div className="w-full p-10 bg-slate-50 bg-svg">
+        <h1 className="text-center text-slate-600 text-3xl md:text-7xl my-12 ">Envision Connect</h1>
+
+        <div className="grid grid-cols-5 gap-3 w-fit mx-auto mb-12">
+          {links.map(({ to, icon: Icon, label }, index) => (
+            <Link key={index} to={to}>
+              <button className={buttonStyle}>
+                <Icon size="18" className="mr-3" />
+                {label}
+              </button>
+            </Link>
+          ))}
         </div>
-      )}
+
+        {usefulLinks.length > 0 && (
+          <GlassCard>
+            <div className="container max-w-3xl mx-auto my-10 text-slate-600">
+              <p className="text-3xl font-bold text-center mb-4">Useful Links</p>
+              <div className="grid grid-cols-1 divide-y-4">
+                {usefulLinks.map((link, index) => (
+                  <UsefulLink key={index} link={link.url} name={link.name} />
+                ))}
+              </div>
+            </div>
+          </GlassCard>
+        )}
+      </div>
+    );
+  } else {
+    return <UnauthedHomePage />;
+  }
+};
+
+const UnauthedHomePage = () => {
+  return (
+    <div className="w-full p-4 md:p-10 bg-slate-50 bg-svg  flex justify-center items-center">
+      <div className="mx-auto">
+        <h1 className="text-center text-slate-600 text-3xl md:text-7xl mb-6 ">Envision Connect</h1>
+        <h2 className="text-center text-purple-400 text-2xl md:text-4xl mb-8">Ensono Integration API</h2>
+        <p className="text-center text-slate-500 w-8/12 md:w-1/2 mx-auto mb-8 font-semibold text-sm md:text-lg">
+          Envision Connect is an ITSM tool developed by Ensono that allows for seamless integration and communication
+          between clients and Ensono for incident and request management.
+        </p>
+        <div className="flex mb-12 mx-auto gap-4 justify-center items-center flex-col md:flex-row">
+          <Link to="/docs/overview">
+            <Button variant="contained">Get Started</Button>
+          </Link>{" "}
+          <Link to="/docs">
+            <Button
+              variant="outlined"
+              sx={{
+                backgroundColor: "white",
+                ":hover": {
+                  backgroundColor: "white",
+                },
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <IoMdDocument />
+                <p className="font-semibold tracking-tight">Documentation</p>
+              </div>
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
 
+const GlassCard = ({ children }) => {
+  return (
+    <div className="px-8 w-1/2 mx-auto rounded-md backdrop-filter backdrop-blur-sm bg-opacity-70 border border-slate-200 hover:border-slate-400 transition-all duration-200 hover:bg-opacity-20 hover:bg-white">
+      {children}
+    </div>
+  );
+};
 export default HomePage;

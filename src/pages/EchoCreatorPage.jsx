@@ -106,10 +106,10 @@ const EchoCreatorPage = ({ data }) => {
       },
     };
     console.log(apiPayload);
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/tickets`, {
+    fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/tickets`, {
       method: "PUT",
       headers: {
-        "x-api-key": process.env.REACT_APP_API_KEY,
+        "x-api-key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
       body: JSON.stringify(apiPayload),
     })

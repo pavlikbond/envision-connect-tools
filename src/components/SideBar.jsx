@@ -68,10 +68,10 @@ const SideBar = () => {
           />
         </div>
       </div>
-      {
+      {/* {
         //if we're in the /docs* path, render the docs sidebar
         isDocs() && <DocsSidebar />
-      }
+      } */}
     </div>
   );
 };

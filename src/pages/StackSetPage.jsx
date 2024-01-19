@@ -37,9 +37,9 @@ const StackSetPage = () => {
       syncMapping: syncMapping === "true" ? true : false,
     };
 
-    await fetch(`${process.env.REACT_APP_API_ENDPOINT}/stacksets`, {
+    await fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/stacksets`, {
       headers: {
-        "x-api-key": process.env.REACT_APP_API_KEY,
+        "x-api-key": import.meta.env.VITE_REACT_APP_API_KEY,
       },
       method: "PUT",
       body: JSON.stringify(formData),

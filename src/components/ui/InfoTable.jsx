@@ -2,7 +2,7 @@ import React from "react";
 
 const InfoTable = ({ tableHeaders, tableData, tableFooter }) => {
   return (
-    <table className="table table-sm bg-white w-full min-w-[800px]">
+    <table className="table table-sm bg-slate-50 w-full min-w-[800px]">
       <thead>
         <tr>
           {tableHeaders.map((header, index) => {

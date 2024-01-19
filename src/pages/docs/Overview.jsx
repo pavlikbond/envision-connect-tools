@@ -39,7 +39,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <div className="my-20 markdown">
+    <div className="my-20 markdown mx-auto">
       <Container maxWidth="lg">
         <div className="grid gap-8">
           <div className="rounded shadow-sm bg-slate-50 p-4 grid">
