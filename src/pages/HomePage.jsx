@@ -11,7 +11,7 @@ import { useUser } from "../contexts/UserContext";
 import DataArrayIcon from "@mui/icons-material/DataArray";
 import UsefulLink from "../components/ui/UsefulLink";
 import { IoMdDocument } from "react-icons/io";
-import Laptop from "../assets/laptop.jpg";
+import GlassCard from "../components/ui/GlassCard";
 import Button from "@mui/material/Button";
 const buttonStyle =
   "w-48 h-12 bg-purple-500 duration-200 text-white font-semibold flex items-center px-2 py-2 rounded shadow";
@@ -133,11 +133,4 @@ const UnauthedHomePage = () => {
   );
 };
 
-const GlassCard = ({ children }) => {
-  return (
-    <div className="px-8 w-1/2 mx-auto rounded-md backdrop-filter backdrop-blur-sm bg-opacity-70 border border-slate-200 hover:border-slate-400 transition-all duration-200 hover:bg-opacity-20 hover:bg-white">
-      {children}
-    </div>
-  );
-};
 export default HomePage;

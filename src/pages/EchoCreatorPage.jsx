@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import Box from "@mui/material/Box";
+
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -185,14 +185,13 @@ const EchoCreatorPage = ({ data }) => {
       <div className="bg-slate-100 rounded shadow-md p-6 flex flex-col gap-6">
         {loading ? (
           <>
-            <Box sx={{ display: "flex" }}>
-              <CircularProgress />
-            </Box>
-            <Box className="flex flex-col gap-3">
+            <CircularProgress />
+
+            <div className="flex flex-col gap-3">
               <Skeleton variant="rounded" width={350} height={50} />
               <Skeleton variant="rounded" width={350} height={50} />
               <Skeleton variant="rounded" width={350} height={50} />
-            </Box>
+            </div>
           </>
         ) : (
           <>
@@ -280,11 +279,7 @@ const EchoCreatorPage = ({ data }) => {
                 onClick={generateTicket}
                 disabled={waiting || Object.keys(company).length === 0}
               >
-                {waiting && (
-                  <Box className="pr-3" sx={{ display: "flex" }}>
-                    <CircularProgress color="secondary" size={"1.5rem"} />
-                  </Box>
-                )}
+                {waiting && <CircularProgress className="mr-2" color="secondary" size={"1.5rem"} />}
                 Generate
               </Button>
             </div>

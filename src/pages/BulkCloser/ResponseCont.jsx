@@ -1,21 +1,29 @@
 import React from "react";
 import IndividualResponse from "./individualResponse";
 import { motion } from "framer-motion";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Box sx={{ width: "100%", mr: 1 }}>
+    // <Box sx={{ display: "flex", alignItems: "center" }}>
+    //   <Box sx={{ width: "100%", mr: 1 }}>
+    //     <LinearProgress variant="determinate" {...props} />
+    //   </Box>
+    //   <Box sx={{ minWidth: 35 }}>
+    //     <Typography variant="body2" color="text.secondary">{`${Math.round(props.value)}%`}</Typography>
+    //   </Box>
+    // </Box>
+    <div className="flex items-center">
+      <div className="w-full mr-1">
         <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
+      </div>
+      <div className="min-w-[35px]">
         <Typography variant="body2" color="text.secondary">{`${Math.round(props.value)}%`}</Typography>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }
 
@@ -28,7 +36,6 @@ LinearProgressWithLabel.propTypes = {
 };
 
 const ResponseCont = ({ responses, onDelete, retryApi, isClicked, setIsClicked }) => {
-  console.log(responses);
   //convert visible responses to a csv file and download it
   const downloadCSV = (responses) => {
     //turns the responses array of objects into a CSV string
@@ -116,25 +123,25 @@ const ResponseCont = ({ responses, onDelete, retryApi, isClicked, setIsClicked }
             <p className="py-1 text-slate-600">
               Succeeded: {progressVals.success}/{progressVals.max}
             </p>
-            <Box sx={{ width: "100%" }}>
+            <div className="w-full">
               <LinearProgressWithLabel
                 color="success"
                 variant="determinate"
                 value={(progressVals.success / progressVals.max) * 100}
               />
-            </Box>
+            </div>
           </div>
           <div className="border-[1px] rounded border-slate-200 p-2">
             <p className="py-1 text-slate-600">
               Failed: {progressVals.failed}/{progressVals.max}
             </p>
-            <Box sx={{ width: "100%" }}>
+            <div className="w-full">
               <LinearProgressWithLabel
                 color="error"
                 variant="determinate"
                 value={(progressVals.failed / progressVals.max) * 100}
               />
-            </Box>
+            </div>
           </div>
         </div>
       </div>

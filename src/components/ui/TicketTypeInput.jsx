@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -6,7 +6,8 @@ import Select from "@mui/material/Select";
 
 const TicketTypeInput = ({ onTicketTypeChange, ticketTypeOptions = ["Incident", "Request"] }) => {
   return (
-    <Box sx={{ minWidth: 120 }}>
+    // <Box sx={{ minWidth: 120 }}>
+    <div className="min-w-[120px]">
       <FormControl fullWidth>
         <InputLabel id="ticket-type">Ticket Type</InputLabel>
         <Select
@@ -22,7 +23,8 @@ const TicketTypeInput = ({ onTicketTypeChange, ticketTypeOptions = ["Incident", 
           ))}
         </Select>
       </FormControl>
-    </Box>
+    </div>
+    // </Box>
   );
 };
 

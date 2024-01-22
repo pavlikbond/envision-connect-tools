@@ -6,7 +6,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Toast from "../components/ui/Toast";
 
@@ -113,12 +113,11 @@ const StackSetPage = () => {
             <FormControlLabel value="false" control={<Radio />} label="False" />
           </RadioGroup>
         </FormControl>
-        <Box>
-          <Button variant="contained" onClick={handleSubmit} disabled={stackSetName.trim().length === 0 || loading}>
-            {loading && <CircularProgress size={24} className="mr-2" />}
-            Submit
-          </Button>
-        </Box>
+
+        <Button variant="contained" onClick={handleSubmit} disabled={stackSetName.trim().length === 0 || loading}>
+          {loading && <CircularProgress size={24} className="mr-2" />}
+          Submit
+        </Button>
       </div>
       {responseMessage && (
         <div className="mt-4">

@@ -41,6 +41,11 @@ const SideBar = () => {
         <div className="mt-5">
           <SideBarIcon icon={<AiOutlineHome size="28" />} text="Home" route="/" />
           <SideBarIcon icon={<IoMdDocument size="28" />} text="Docs" route="/docs" />
+          {!isSignedIn && (
+            <>
+              <SideBarIcon icon={<HiQueueList size="28" />} text="Queue Attributes" route="/queue-attributes" />
+            </>
+          )}
           {isSignedIn && (
             <>
               <SideBarIcon icon={<FaRegTrashAlt size="28" />} text="Bulk Closer" route="/bulk-closer" />

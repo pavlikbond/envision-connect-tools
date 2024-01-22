@@ -1,7 +1,7 @@
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useEffect } from "react";
 import FlagIcon from "@mui/icons-material/Flag";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import Link from "@mui/material/Link";
 
@@ -67,11 +67,11 @@ const FlagFinder = ({ data }) => {
 
   if (loading) {
     return (
-      <Box className="m-auto">
+      <div className="m-auto">
         {Array.from(Array(18).keys()).map((skeleton, index) => {
           return <Skeleton key={index} animation="wave" variant="rounded" width={550} height={35} sx={{ mb: 0.5 }} />;
         })}
-      </Box>
+      </div>
     );
   }
 

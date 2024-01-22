@@ -6,6 +6,7 @@ const DeletePage = () => {
   return (
     <div className="w-full max-w-5xl mx-auto my-12 grid gap-4 h-fit">
       <h1 className="text-center">Deleting from Queue</h1>
+
       <div className="rounded shadow-sm bg-slate-50 p-4">
         <h2 className="text-2xl font-bold text-slate-600 mb-4">Notes</h2>
         <p>

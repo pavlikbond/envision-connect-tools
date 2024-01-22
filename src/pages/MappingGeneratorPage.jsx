@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -112,7 +112,8 @@ const MappingGeneratorPage = () => {
   return (
     <div className="mx-auto my-8 flex flex-col gap-3">
       <div className=" flex gap-2">
-        <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}>
+        {/* <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}> */}
+        <div className="min-w-[120px] bg-white rounded">
           <FormControl sx={{ m: 0, width: "25ch" }} variant="outlined" error={!name}>
             <InputLabel>Company SNOW Name</InputLabel>
             <OutlinedInput
@@ -140,9 +141,11 @@ const MappingGeneratorPage = () => {
               value={name}
             />
           </FormControl>
-        </Box>
+          {/* </Box> */}
+        </div>
 
-        <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}>
+        {/* <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}> */}
+        <div className="min-w-[120px] bg-white rounded">
           <FormControl fullWidth>
             <InputLabel id="environment-dropdown">Environment</InputLabel>
             <Select labelId="environment-dropdown" value={environment} label="Environment" onChange={handleChange}>
@@ -152,7 +155,8 @@ const MappingGeneratorPage = () => {
               <MenuItem value={"ensono.service-now.com"}>v1 Production</MenuItem>
             </Select>
           </FormControl>
-        </Box>
+          {/* </Box> */}
+        </div>
         <Button className="w-32" variant="contained" onClick={getMapping} disabled={loading || !name}>
           {loading && <CircularProgress size={20} className="mr-2" />}
           Start

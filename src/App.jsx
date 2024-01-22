@@ -7,7 +7,6 @@ import QueueReader from "./pages/QueueReaderPage.jsx";
 import Home from "./pages/HomePage.jsx";
 import GroupMappings from "./pages/GroupMappingsPage.jsx";
 import { useEffect, useState } from "react";
-import { UserProvider } from "./contexts/UserContext.jsx";
 import EchoCreator from "./pages/EchoCreatorPage.jsx";
 import MappingGenerator from "./pages/MappingGeneratorPage.jsx";
 import GroupFinderPage from "./pages/GroupFinderPage.jsx";
@@ -30,6 +29,7 @@ import GetTicketDetailsPage from "./pages/docs/GetTicketDetailsPage.jsx";
 import EchoPage from "./pages/docs/EchoPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import SignIn from "./pages/SignIn.jsx";
+import QueueAttributes from "./pages/QueueAttributesPage.jsx";
 
 function App() {
   const [companyData, setCompanyData] = useState({});
@@ -123,6 +123,7 @@ function App() {
           <Route path="get-ticket-details/" element={<GetTicketDetailsPage />} />
           <Route path="echo/" element={<EchoPage />} />
         </Route>
+        <Route path="/queue-attributes/" element={<QueueAttributes />} />
         <Route path="/sign-in/" element={<SignIn />} />
 
         <Route element={<ProtectedRoute />}>

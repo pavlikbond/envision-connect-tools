@@ -1,6 +1,6 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -112,15 +112,13 @@ const GroupMappingsPage = ({ data }) => {
               Download CSV
             </Button>
           </div>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <Tabs value={value} onChange={handleChange} centered>
-              {selectedCompany.tableData.map((tableDataItem, index) => {
-                return (
-                  <Tab key={index} label={tableDataItem.environment + " " + tableDataItem.version} value={index} />
-                );
-              })}
-            </Tabs>
-          </Box>
+          {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}> */}
+          <Tabs value={value} onChange={handleChange} centered>
+            {selectedCompany.tableData.map((tableDataItem, index) => {
+              return <Tab key={index} label={tableDataItem.environment + " " + tableDataItem.version} value={index} />;
+            })}
+          </Tabs>
+          {/* </Box> */}
           <div className="">
             <div className="text-xl py-2">
               Table Name:{" "}
@@ -190,14 +188,13 @@ const Table = ({ data, numbered = true }) => {
 const MySkeleton = () => {
   return (
     <>
-      <Box className="flex justify-center my-4">
-        <CircularProgress />
-      </Box>
-      <Box>
+      <CircularProgress className="" />
+
+      <div>
         {Array.from(Array(18).keys()).map((skeleton, index) => {
           return <Skeleton key={index} animation="wave" variant="rounded" width={550} height={35} sx={{ mb: 0.5 }} />;
         })}
-      </Box>
+      </div>
     </>
   );
 };

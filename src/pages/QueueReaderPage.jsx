@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useRef } from "react";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -202,7 +202,8 @@ const QueueReaderCard = ({ id, deleteQueueCard, companyDataList }) => {
         ></AiFillCloseCircle>
       )}
       <div className="flex gap-3">
-        <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}>
+        {/* <Box sx={{ minWidth: 120, background: "white", borderRadius: "5px" }}> */}
+        <div className="bg-white rounded min-w-[120px]">
           <FormControl fullWidth error={companyError}>
             <InputLabel id="company-label">Company</InputLabel>
             <Select labelId="company-label" value={company?.company || ""} label="Companies" onChange={handleChange}>
@@ -217,7 +218,8 @@ const QueueReaderCard = ({ id, deleteQueueCard, companyDataList }) => {
                 })}
             </Select>
           </FormControl>
-        </Box>
+        </div>
+        {/* </Box> */}
         <ColorToggleButton alignment={alignment} setAlignment={setAlignment} company={company} />
       </div>
       <div className="flex gap-3">

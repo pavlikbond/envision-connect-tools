@@ -42,11 +42,11 @@
 body {
   background-color: rgb(236, 234, 238);
   min-height: 100vh;
-  background-image: url("../public/bg.svg");
+  background-image: url("/bg.svg");
 }
 
 .bg-svg {
-  background-image: url("../public/bg.svg");
+  background-image: url("/bg.svg");
 }
 
 .main-container {
