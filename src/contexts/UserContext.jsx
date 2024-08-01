@@ -11,6 +11,7 @@ export function useUser() {
 export function UserProvider({ children }) {
   const [role, setRole] = useState("");
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // New state variable
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export function UserProvider({ children }) {
       } catch (error) {
         clearUser();
       }
+      setIsLoading(false); // Set isLoading to false once we're done
     }
 
     Hub.listen("auth", async ({ payload }) => {
@@ -56,5 +58,5 @@ export function UserProvider({ children }) {
     setEmail("");
   };
 
-  return <UserContext.Provider value={{ role, isSignedIn, name, email }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ role, isSignedIn, name, email, isLoading }}>{children}</UserContext.Provider>; // Include isLoading in the context
 }

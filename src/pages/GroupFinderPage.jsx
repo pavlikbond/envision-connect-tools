@@ -8,6 +8,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import ErrorIcon from "@mui/icons-material/Error";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import Link from "@mui/material/Link";
 
 const GroupFinderPage = ({ data }) => {
   const [companyData, setCompanyData] = useState([]);
@@ -43,6 +44,7 @@ const GroupFinderPage = ({ data }) => {
                     companyName: allMapping.Company,
                     tableName: company.name,
                     group: groupMapping.ensonoVal,
+                    APIKeyId: company.APIKeyId,
                   };
                   results.push(result);
                 }
@@ -53,6 +55,7 @@ const GroupFinderPage = ({ data }) => {
                     companyName: allMapping.Company,
                     tableName: company.name,
                     group: groupMapping.ensonoVal,
+                    APIKeyId: company.APIKeyId,
                   };
                   results.push(result);
                 }
@@ -163,7 +166,15 @@ const GroupFinderPage = ({ data }) => {
               return (
                 <tr key={index} className="hover">
                   <td className="text-slate-700 pr-5">{index + 1}</td>
-                  <td className="text-slate-700 font-semibold px-4">{result.table}</td>
+                  <td className="text-slate-700 font-semibold px-4">
+                    <Link
+                      href={`https://us-west-1.console.aws.amazon.com/dynamodbv2/home?region=us-west-1#edit-item?itemMode=2&pk=${result.APIKeyId}&route=ROUTE_ITEM_EXPLORER&sk=&table=${result.table}`}
+                      rel="noopener"
+                      target="_blank"
+                    >
+                      {result.table}
+                    </Link>
+                  </td>
                   <td className="text-slate-700 font-semibold px-4">{result.companyName}</td>
                   <td className="text-slate-700 font-semibold px-4">{result.tableName}</td>
                   <td className="text-slate-700 font-semibold px-4  max-w-[300px] truncate">{result.group}</td>

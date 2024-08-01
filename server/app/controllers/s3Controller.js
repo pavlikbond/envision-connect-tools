@@ -3,7 +3,7 @@ import fs from "fs";
 import os from "os";
 
 export async function downloadFromS3() {
-  const file_key = "Envision Connect 2 Client Guide v1.2.pdf";
+  const file_key = "Envision Connect 2 Client Guide v1.3.pdf";
   try {
     const s3Client = new S3Client({
       region: "us-west-1",

@@ -1,7 +1,7 @@
 import React from "react";
 
 const PDFViewer = () => {
-  const url = "https://public-client-guide.s3.us-west-1.amazonaws.com/Envision+Connect+2+Client+Guide+v1.2.pdf";
+  const url = "https://public-client-guide.s3.us-west-1.amazonaws.com/Envision+Connect+2+Client+Guide+v1.3.pdf";
 
   return (
     <object data={url} type="application/pdf" className="flex-[3] w-full h-full">

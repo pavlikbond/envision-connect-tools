@@ -20,7 +20,7 @@ const FlagFinder = ({ data }) => {
     } else if (typeof value === "number") {
       return value;
     } else if (typeof value === "boolean") {
-      return value.toString();
+      return value?.toString() || "";
     }
   };
 
@@ -30,6 +30,7 @@ const FlagFinder = ({ data }) => {
         for (let envItem of item?.tableData) {
           if (!envItem?.mappings) continue;
           for (let mapping of envItem?.mappings) {
+            if (!mapping?.mapping) continue;
             for (let name of Object.keys(mapping.mapping)) {
               const tempObj = {
                 client: item.name,

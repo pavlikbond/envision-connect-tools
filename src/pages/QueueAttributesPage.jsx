@@ -27,6 +27,7 @@ const QueueAttributes = () => {
 
   const handleToggleChange = (event, newEnvironment) => {
     setEnvironment(newEnvironment);
+    clearCounts();
   };
   const handleClickShowApiKey = () => setShowApiKey((show) => !show);
 
@@ -75,6 +76,14 @@ const QueueAttributes = () => {
     },
   });
 
+  const handleSubmit = () => {
+    if (apiKey.trim() === "") {
+      setErrorMessage("API Key is required");
+      return;
+    }
+    mutation.mutate();
+  };
+
   return (
     <div className="bg-slate-50 h-fit p-8 grid gap-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <h1 className="text-5xl font-bold text-slate-600 ">Queue Attributes</h1>
@@ -114,7 +123,7 @@ const QueueAttributes = () => {
           />
           <FormHelperText error>{errorMessage}</FormHelperText>
         </FormControl>
-        <Button className="h-14 w-32" variant="outlined" disabled={mutation.isPending} onClick={mutation.mutate}>
+        <Button className="h-14 w-32" variant="outlined" disabled={mutation.isPending} onClick={handleSubmit}>
           {mutation.isPending && <Loader2 className="animate-spin mr-2" />}
           Submit
         </Button>
